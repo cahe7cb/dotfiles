@@ -1,0 +1,43 @@
+show_timezones = 1
+
+mainwindow_sticky = 1
+mainwindow_position = center
+
+clock_label = UTC
+clock_tz = UTC
+
+clock_label = Sydney
+clock_tz = Australia/Sydney
+
+clock_label = Tokyo
+clock_tz = Asia/Tokyo
+
+clock_label = Daca
+clock_tz = Asia/Dacca
+
+clock_label = Moscow
+clock_tz = Europe/Moscow
+
+clock_label = Berlin
+clock_tz = Europe/Berlin
+
+clock_label = London
+clock_tz = Europe/London
+
+clock_label = Fortaleza
+clock_tz = America/Fortaleza
+
+clock_label = Sao Paulo
+clock_tz = America/Sao_Paulo
+
+clock_label = New York
+clock_tz = America/New_York
+
+clock_label = Mexico
+clock_tz = America/Mexico_City
+
+clock_label = Los Angeles
+clock_tz = America/Los_Angeles
+
+clock_label = Hawaii
+clock_tz = US/Hawaii

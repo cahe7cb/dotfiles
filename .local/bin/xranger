@@ -1,0 +1,2 @@
+#!/bin/bash
+urxvtc -fn 'xft:TerminessTTF Nerd Font Mono:pixelsize=18, xft:FontAwesome:pixelsize=20' -e ranger

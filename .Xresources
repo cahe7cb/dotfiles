@@ -1,0 +1,21 @@
+Xft.lcdfilter:	lcddefault
+Xft.hintstyle:	hintslight
+Xft.hinting:	true
+Xft.autohint:	false
+Xft.antialias:	true
+Xft.rgba:		rgb
+xft.dpi:        96
+
+URxvt.font:         xft:Ubuntu Mono
+URxvt.scrollBar:	false
+URxvt.buffered:		true
+URxvt.depth:		32
+URxvt.background:	[90]black
+URxvt.foreground:	white
+URxvt.internalBorder: 5
+
+URxvt*color12:		cyan
+
+*background: #002b36
+*foreground: #839496
+
