@@ -1,0 +1,8 @@
+XDG_DESKTOP_DIR="/home/cahe"
+XDG_DOWNLOAD_DIR="/home/cahe/downloads"
+XDG_TEMPLATES_DIR="/home/cahe/templates"
+XDG_PUBLICSHARE_DIR="/home/cahe/public"
+XDG_DOCUMENTS_DIR="/home/cahe/docs"
+XDG_MUSIC_DIR="/home/cahe/music"
+XDG_PICTURES_DIR="/home/cahe/images"
+XDG_VIDEOS_DIR="/home/cahe/videos"
