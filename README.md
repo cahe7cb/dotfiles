@@ -16,6 +16,7 @@
 - [udiskie](https://github.com/coldfix/udiskie)
 - [gsimplecal](https://github.com/dmedvinsky/gsimplecal)
 - [neovim](https://github.com/neovim/neovim) and [neovim-qt](https://github.com/equalsraf/neovim-qt)
+- [emacs](https://www.gnu.org/software/emacs/)
 - [ranger](https://github.com/ranger/ranger)
 - [zathura](http://pwmt.org/projects/zathura)
 
