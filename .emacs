@@ -30,6 +30,8 @@
       inhibit-startup-echo-area-message 1
       inhibit-startup-message 1)
 
+(setq next-screen-context-lines 10)
+
 ;; Hooks for irony
 (use-package irony
   :init
@@ -48,25 +50,28 @@
   :ensure t
   :diminish flycheck-mode)
 
-;; Rust completion using racer with company
-(use-package racer
+;; Company completion
+(use-package company
   :after rust-mode
   :init
-    (add-hook 'rust-mode-hook #'racer-mode)
-    (use-package company
-      :init
-        (add-hook 'racer-mode-hook #'company-mode)
-      :config
-        (setq company-idle-delay nil)
-        (setq company-tooltip-align-annotations t))
-  :config
-    (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common))
+  (add-hook 'rust-mode-hook #'company-mode))
 
-(use-package flycheck-rust
-  :commands flycheck-rust-setup
+;; Language server integration
+(use-package lsp-mode
+  :after rust-mode
+  :commands lsp
   :init
-    (with-eval-after-load "flycheck"
-      (add-to-list 'flycheck-mode-hook #'flycheck-rust-setup)))
+  (add-hook 'rust-mode-hook #'lsp))
+
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+
+(setq lsp-prefer-flymake nil)
+
+;; Parentheses matching
+(use-package autopair
+  :init
+  (autopair-global-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -76,7 +81,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(package-selected-packages
    (quote
-    (smex magit magit-gh-pulls magit-todos magithub flycheck-rust use-package ac-racer racer rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-irony company-irony-c-headers company-math company-statistics flycheck flycheck-irony irony))))
+    (company-lsp lsp-mode lsp-ui autopair smex magit magit-gh-pulls magit-todos magithub use-package rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-irony company-irony-c-headers company-math company-statistics flycheck flycheck-irony irony))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
