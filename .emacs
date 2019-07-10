@@ -1,12 +1,17 @@
 (package-initialize)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Hide pleb GUI stuff
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (ido-mode 1)
+
+;; Custom rebindings
+(global-set-key (kbd "C-x \S-o") (lambda () (interactive) (other-window -1)))
 
 (set-frame-font "Ubuntu Mono-12")
 
@@ -81,7 +86,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(package-selected-packages
    (quote
-    (company-lsp lsp-mode lsp-ui autopair smex magit magit-gh-pulls magit-todos magithub use-package rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-irony company-irony-c-headers company-math company-statistics flycheck flycheck-irony irony))))
+    (solarized-theme haskell-mode haskell-tab-indent company-lsp lsp-mode lsp-ui autopair smex magit magit-gh-pulls magit-todos magithub use-package rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-irony company-irony-c-headers company-math company-statistics flycheck flycheck-irony irony))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
