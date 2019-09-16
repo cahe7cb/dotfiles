@@ -8,6 +8,7 @@
 (load "~/.emacs.rc/rust-mode.el")
 (load "~/.emacs.rc/cc-mode.el")
 (load "~/.emacs.rc/haskell-mode.el")
+(load "~/.emacs.rc/go-mode.el")
 
 ;; Hide pleb GUI stuff
 (tool-bar-mode 0)
@@ -29,7 +30,7 @@
 
 ;; Spaces are better than tabs
 (setq-default c-basic-offset 4)
-
+(setq-default tab-width 4)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-hook 'c-mode-hook (lambda ()
@@ -37,8 +38,13 @@
                          (c-toggle-comment-style -1)))
 
 (use-package move-text)
-(use-package multiple-cursors)
 (move-text-default-bindings)
+(use-package multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (use-package company)
 (global-company-mode)
@@ -85,14 +91,14 @@
  '(custom-enabled-themes (quote (doom-one)))
  '(custom-safe-themes
    (quote
-    ("6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "2642a1b7f53b9bb34c7f1e032d2098c852811ec2881eec2dc8cc07be004e45a0" default)))
+	("2d1fe7c9007a5b76cea4395b0fc664d0c1cfd34bb4f1860300347cdad67fb2f9" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "2642a1b7f53b9bb34c7f1e032d2098c852811ec2881eec2dc8cc07be004e45a0" default)))
  '(package-selected-packages
    (quote
-    (doom-modeline doom-themes flycheck-haskell flymake-haskell-multi move-text multiple-cursors atom-dark-theme color-theme-sanityinc-tomorrow clean-aindent-mode solarized-theme haskell-mode haskell-tab-indent company-lsp lsp-mode lsp-ui autopair smex magit magit-gh-pulls magit-todos magithub use-package rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-math company-statistics flycheck))))
+	(company-go go-mode doom-modeline doom-themes flycheck-haskell flymake-haskell-multi move-text multiple-cursors atom-dark-theme color-theme-sanityinc-tomorrow clean-aindent-mode solarized-theme haskell-mode haskell-tab-indent company-lsp lsp-mode lsp-ui autopair smex magit magit-gh-pulls magit-todos magithub use-package rust-mode zenburn-theme abyss-theme cmake-ide yasnippet company company-math company-statistics flycheck))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:height 0.9))))
+ '(mode-line ((t (:height 0.85))))
  '(mode-line-inactive ((t (:height 0.9)))))
