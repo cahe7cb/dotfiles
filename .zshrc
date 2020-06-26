@@ -51,7 +51,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bgnotify git)
+plugins=(bgnotify git dirhistory golang docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,6 +84,9 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='lsd'
+alias dc='docker-compose'
+
+compdef dc='docker-compose'
 
 # End the prompt, closing any open segments
 prompt_end() {

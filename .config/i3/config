@@ -6,7 +6,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:xos4 Terminus, DejaVu Sans 9
+font pango:Terminus, DejaVu Sans 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -41,6 +41,7 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+ccedilla focus right
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -53,6 +54,7 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+ccedilla move right
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -134,21 +136,29 @@ mode "resize" {
 	# Pressing right will grow the window’s width.
 	# Pressing up will shrink the window’s height.
 	# Pressing down will grow the window’s height.
-	bindsym j resize shrink width 10 px or 10 ppt
-	bindsym k resize grow height 10 px or 10 ppt
-	bindsym l resize shrink height 10 px or 10 ppt
-	bindsym ccedilla resize grow width 10 px or 10 ppt
+	bindsym j resize shrink width 10 px or 5 ppt
+	bindsym k resize grow height 10 px or 5 ppt
+	bindsym l resize shrink height 10 px or 5 ppt
+	bindsym ccedilla resize grow width 10 px or 5 ppt
+	bindsym semicolon resize grow width 10 px or 5 ppt
 
-	bindsym Shift+j resize shrink width 50 px or 50 ppt
-	bindsym Shift+k resize grow height 50 px or 50 ppt
-	bindsym Shift+l resize shrink height 50 px or 50 ppt
-	bindsym Shift+ccedilla resize grow width 50 px or 50 ppt
+	bindsym Shift+j resize shrink width 50 px or 10 ppt
+	bindsym Shift+k resize grow height 50 px or 10 ppt
+	bindsym Shift+l resize shrink height 50 px or 10 ppt
+	bindsym Shift+ccedilla resize grow width 50 px or 10 ppt
+	bindsym Shift+semicolon resize grow width 50 px or 10 ppt
 
 	# same bindings, but for the arrow keys
 	bindsym Left resize shrink width 10 px or 10 ppt
 	bindsym Down resize grow height 10 px or 10 ppt
 	bindsym Up resize shrink height 10 px or 10 ppt
 	bindsym Right resize grow width 10 px or 10 ppt
+
+	# adjust gap size
+	bindsym plus gaps inner current plus 5
+	bindsym minus gaps inner current minus 5
+	bindsym Shift+plus gaps outer current plus 5
+	bindsym Shift+minus gaps outer current minus 5
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -161,6 +171,7 @@ mode "move" {
 	bindsym k move down 10 px
 	bindsym l move up 10 px
 	bindsym ccedilla move right 10 px
+	bindsym semicolon move right 10 px
 
 	bindsym Left move left 10 px
 	bindsym Down move down 10 px
@@ -171,6 +182,7 @@ mode "move" {
 	bindsym Shift+k move down 50 px
 	bindsym Shift+l move up 50 px
 	bindsym Shift+ccedilla move right 50 px
+	bindsym Shift+semicolon move right 50 px
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -178,10 +190,26 @@ mode "move" {
 }
 
 mode "quickrun" {
-	bindsym e exec xranger
-	bindsym d exec zathura
-	bindsym x exec file-roller
-	bindsym c exec urxvtc -e python -i ~/.local/bin/calc.py
+	bindsym e exec xranger; mode "default"
+	bindsym d exec zathura; mode "default"
+	bindsym x exec file-roller; mode "default"
+	bindsym c exec urxvtc -e python -i ~/.local/bin/calc.py; mode "default"
+	bindsym l exec xautolock -locknow; mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+mode "media" {
+	bindsym Space exec playerctl play-pause; mode "default"
+	bindsym k exec playerctl play-pause; mode "default"
+
+	bindsym Left exec playerctl position 10-
+	bindsym Right exec playerctl position 10+
+
+	bindsym Up exec playerctl volume 0.1+
+	bindsym Down exec playerctl volume 0.1-
+
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -190,6 +218,7 @@ mode "quickrun" {
 bindsym $mod+m mode "move"
 bindsym $mod+r mode "resize"
 bindsym $mod+x mode "quickrun"
+bindsym $mod+u mode "media"
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #6F6F6F #000000 #32D6FF #2e9ef4   #6F6F6F

@@ -16,6 +16,8 @@
 (scroll-bar-mode 0)
 (ido-mode 1)
 (global-hl-line-mode 1)
+(winner-mode 1)
+(global-auto-revert-mode 1)
 
 ;; Custom rebindings
 (global-set-key (kbd "C-x \S-o") (lambda () (interactive) (other-window -1)))
@@ -31,6 +33,7 @@
 ;; Spaces are better than tabs
 (setq-default c-basic-offset 4)
 (setq-default tab-width 4)
+(setq-default truncate-lines 0)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-hook 'c-mode-hook (lambda ()
@@ -45,6 +48,21 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  :bind
+  (:map global-map
+		("M-0" . treemacs-select-window)))
+
+(use-package ace-window
+  :ensure t
+  :init
+  :bind
+  (:map global-map
+		("M-o" . ace-window)))
 
 (use-package company)
 (global-company-mode)
